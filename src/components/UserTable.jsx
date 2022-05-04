@@ -14,19 +14,22 @@ const UserTable = (props) => {
             <tbody>
                 {
                     props.users.length > 0 ?
-                    props.users.map((user) => (
-                        <tr key={user.id}>
-                            <td>{user.name}</td>
-                            <td>{user.username}</td>
-                            <td>
-                                <button className="button muted-button">Edit</button>
-                                <button className="button muted-button">Delete</button>
-                            </td>
-                        </tr>
-                    )) : (
-                        <tr colSpan={3}> No users</tr>
-                    )
-                
+                        props.users.map((user) => (
+                            <tr key={user.id}>
+                                <td>{user.name}</td>
+                                <td>{user.username}</td>
+                                <td>
+                                    <button className="button muted-button">Edit</button>
+                                    <button className="button muted-button"
+                                        onClick={() => { props.deleteUSer(user.id) }}
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        )) : (
+                            <tr colSpan={3}> No users</tr>
+                        )
                 }
             </tbody>
         </table>

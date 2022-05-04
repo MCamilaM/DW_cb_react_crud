@@ -16,7 +16,7 @@ function App() {
   const [users, setUsers] = useState(usersData);
 
   // Funcion Agregar usuario
-  const addUser = (user) =>{
+  const addUser = (user) => {
     user.id = uuidv4()
     setUsers([
       ...users,
@@ -24,17 +24,22 @@ function App() {
     ])
   }
 
+  //Eliminar usuarios
+  const deleteUSer = (id) => {
+    setUsers(users.filter(user => user.id !== id))
+  } 
+
   return (
     <div className="container">
       <h1>CRUD App with Hooks</h1>
       <div className="flex-row">
         <div className="flex-large">
           <h2>Add user</h2>
-          <AddUserForm addUser ={addUser}/>
+          <AddUserForm addUser={addUser} />
         </div>
         <div className="flex-large">
           <h2>View users</h2>
-          <UserTable users={users}/>
+          <UserTable users={users} deleteUSer={deleteUSer} />
         </div>
       </div>
     </div>
