@@ -1,5 +1,6 @@
 import React from "react";
-
+import "../index.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
 const UserTable = (props) => {
     console.log(props.users);
     return (
@@ -22,12 +23,13 @@ const UserTable = (props) => {
                                 <td>{user.favColor}</td>
                                 <td>
                                     <button
-                                        className="button muted-button"
+                                        className="btn btn-info"
                                         onClick={() => { props.editRow(user) }}
                                     >
                                         Edit
                                     </button>
-                                    <button className="button muted-button"
+                                    {" "}
+                                    <button className="btn btn-danger"
                                         onClick={() => { props.deleteUSer(user.id) }}
                                     >
                                         Delete

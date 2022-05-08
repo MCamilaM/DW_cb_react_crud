@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 const EditUserForm = (props) => {
 
     //console.log(props.currentUser)
@@ -46,7 +46,7 @@ const EditUserForm = (props) => {
             <div>
                 {errors?.favColor?.message}
             </div>
-            <button>Edit user</button>
+            <button className="btn btn-info">Edit user</button>
         </form>
     );
 }

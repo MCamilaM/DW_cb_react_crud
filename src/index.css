@@ -848,7 +848,26 @@ a.muted-button:active {
   border: 1px solid #818181;
   background: transparent;
 }
-
+.muted_a{
+  background-color: #68c3ff;
+  border: 1px solid #4e4e4e;
+  color: #4e4e4e;
+}
+.muted_b{
+  background-color: #fa3d3d;
+  border: 1px solid #4e4e4e;
+  color: #4e4e4e;
+}
+.muted_a:hover{
+  color: #000000;
+  border: 1px solid #4e4e4e;
+  background-color: #20a6ff;
+}
+.muted_b:hover{
+  color: #000000;
+  border: 1px solid #4e4e4e;
+  background-color: #fa0808;
+}
 .round-button,
 a.round-button {
   border-radius: 40px;

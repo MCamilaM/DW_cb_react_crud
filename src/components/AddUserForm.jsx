@@ -37,7 +37,7 @@ const AddUserForm = (props) => {
             <div>
                 {errors?.favColor?.message}
             </div>
-            <button>Add new user</button>
+            <button className="btn btn-success">Add new user</button>
         </form>
     );
 }
