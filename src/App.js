@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserTable from './components/UserTable';
 import { v4 as uuidv4 } from 'uuid';
 import AddUserForm from './components/AddUserForm';
@@ -7,16 +7,42 @@ import EditUserForm from './components/EditUserForm';
 
 function App() {
 
-  const usersData = [
+  /*const usersData = [
     { id: uuidv4(), name: 'Tania', username: 'floppydiskette', favColor: 'Red'},
     { id: uuidv4(), name: 'Craig', username: 'siliconeidolon', favColor: 'Blue' },
     { id: uuidv4(), name: 'Ben', username: 'benisphere', favColor: 'Black' },
-  ]
+  ]*/
 
-  //state
-  const [users, setUsers] = useState(usersData);
+  /**
+   * Manejo de datos por local Storage
+   */
+  const localStorageUsers = localStorage.getItem("Users_local")
+  let parsedUser;
 
-  // Funcion Agregar usuario
+  if (!localStorageUsers) {
+    localStorage.setItem("Users_local", JSON.stringify([{}]))
+    parsedUser = [{}];
+  } else {
+    parsedUser = JSON.parse(localStorageUsers)
+
+  }
+
+
+  /**
+   * State
+   */
+  const [users, setUsers] = useState(parsedUser);
+
+  /**
+   * Controlador del LocalStorage
+   */
+  useEffect(() => {
+    localStorage.setItem("Users_local", JSON.stringify(users))
+  }, [users])
+
+  /**
+   *  Funcion Agregar usuario
+   */
   const addUser = (user) => {
     user.id = uuidv4()
     setUsers([
@@ -25,17 +51,22 @@ function App() {
     ])
   }
 
-  //Eliminar usuarios
+  /**
+   * Eliminar usuarios
+   * @param id  
+   */
   const deleteUSer = (id) => {
     setUsers(users.filter(user => user.id !== id))
   }
 
-  //Editar usuario
+  /**
+   * Editar usuario
+   */
 
   const [editing, setEditing] = useState(false);
 
   const [currentUser, setCurrentUser] = useState({
-    id: null, name: '', username: '', favColor:''
+    id: null, name: '', username: '', favColor: ''
   });
 
   const editRow = (user) => {
@@ -48,6 +79,11 @@ function App() {
     })
   }
 
+  /**
+   * Actualizar usuario
+   * @param id 
+   * @param updateUser 
+   */
   const updateUser = (id, updateUser) => {
     setEditing(false);
 
@@ -90,6 +126,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
