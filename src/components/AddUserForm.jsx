@@ -30,6 +30,13 @@ const AddUserForm = (props) => {
             <div>
                 {errors?.username?.message}
             </div>
+            <label>Favorite Color</label>
+            <input type="text" name="favColor" {...register("favColor", {
+                required: { value: true, message: 'Campo Requerido' }
+            })} />
+            <div>
+                {errors?.favColor?.message}
+            </div>
             <button>Add new user</button>
         </form>
     );

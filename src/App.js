@@ -8,9 +8,9 @@ import EditUserForm from './components/EditUserForm';
 function App() {
 
   const usersData = [
-    { id: uuidv4(), name: 'Tania', username: 'floppydiskette' },
-    { id: uuidv4(), name: 'Craig', username: 'siliconeidolon' },
-    { id: uuidv4(), name: 'Ben', username: 'benisphere' },
+    { id: uuidv4(), name: 'Tania', username: 'floppydiskette', favColor: 'Red'},
+    { id: uuidv4(), name: 'Craig', username: 'siliconeidolon', favColor: 'Blue' },
+    { id: uuidv4(), name: 'Ben', username: 'benisphere', favColor: 'Black' },
   ]
 
   //state
@@ -35,7 +35,7 @@ function App() {
   const [editing, setEditing] = useState(false);
 
   const [currentUser, setCurrentUser] = useState({
-    id: null, name: '', username: ''
+    id: null, name: '', username: '', favColor:''
   });
 
   const editRow = (user) => {
@@ -43,7 +43,8 @@ function App() {
     setCurrentUser({
       id: user.id,
       name: user.name,
-      username: user.username
+      username: user.username,
+      favColor: user.favColor
     })
   }
 

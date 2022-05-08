@@ -11,6 +11,7 @@ const EditUserForm = (props) => {
 
     setValue('name', props.currentUser.name)
     setValue('username', props.currentUser.username)
+    setValue('favColor', props.currentUser.favColor)
 
     const onSubmit = (data, e) => {
         console.log(data)
@@ -37,6 +38,13 @@ const EditUserForm = (props) => {
             })} />
             <div>
                 {errors?.username?.message}
+            </div>
+            <label>Favorite Color</label>
+            <input type="text" name="favColor" {...register("favColor", {
+                required: { value: true, message: 'Campo Requerido' }
+            })} />
+            <div>
+                {errors?.favColor?.message}
             </div>
             <button>Edit user</button>
         </form>
